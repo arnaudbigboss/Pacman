@@ -1,0 +1,12 @@
+Le projet est divisé en deux packages: server et client.
+Il y a deux mains dans le projet, un côté server, et un côté client, dans les classes ServerMain et ClientMain
+Par défaut, l'adresse du server est "localhost", et le port "1234". Ils sont modifiables dans les classes des main.
+
+Pour démarrer le jeu, il faut commencer par lancer le server. Lorsqu'un client rejoint le server, il est automatiquement
+considéré comme spectateur. Pour jouer, il faut cliquer sur le bouton PLAY lorsque le jeu n'est pas en cours. Le client
+sera alors considéré comme joueur. Le premier joueur sera administrateur, et sa tâche sera alors de lancer la partie.
+
+Règle:
+Il y a entre deux et quatre joueurs. Un joueur gagne s'il est le seul restant dans le jeu, ou s'il a le plus de points
+lorsque tous les bonbons sont mangés. Un pacman meurt au contact d'un fantôme. Lorsqu'un pacman mange le fruit, 
+il devient Super: il peut manger tout le monde, et se déplace plus rapidement.
