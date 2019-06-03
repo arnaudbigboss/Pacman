@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../MultiplayerPacman-Client/MultiplayerPacman-Client.iml" filepath="$PROJECT_DIR$/../MultiplayerPacman-Client/MultiplayerPacman-Client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MultiplayerPacman-Parent.iml" filepath="$PROJECT_DIR$/MultiplayerPacman-Parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../MultiplayerPacman-Server/MultiplayerPacman-Server.iml" filepath="$PROJECT_DIR$/../MultiplayerPacman-Server/MultiplayerPacman-Server.iml" />
+    </modules>
+  </component>
+</project>
