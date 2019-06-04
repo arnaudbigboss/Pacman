@@ -1,6 +1,8 @@
 package fr.dauphine.ar.model;
 
 import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Random;
 
@@ -47,7 +49,7 @@ public class Ghost {
 	
 	public BufferedImage loadImage(String filename) {
 		try {
-			return ImageIO.read(Ghost.class.getResourceAsStream("/images/"+filename));
+			return ImageIO.read(new BufferedInputStream(new FileInputStream("images"+filename)));
 	    } catch (IOException e) {
 	    	System.out.println("Cant load image");
 	    	return null;

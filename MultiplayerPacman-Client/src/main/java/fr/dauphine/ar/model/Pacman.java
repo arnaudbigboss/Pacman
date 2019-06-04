@@ -4,6 +4,8 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.NoninvertibleTransformException;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -152,7 +154,7 @@ public class Pacman {
 	
 	public BufferedImage loadImage(String filename) {
 		try {
-			return ImageIO.read(Pacman.class.getResourceAsStream("/images/"+filename));
+			return ImageIO.read(new BufferedInputStream(new FileInputStream("images"+filename)));
 	    } catch (IOException e) {
 	    	System.out.println("Cant load image");
 	    	return null;

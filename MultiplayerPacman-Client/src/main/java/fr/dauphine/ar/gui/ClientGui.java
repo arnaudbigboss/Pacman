@@ -11,6 +11,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.TreeMap;
 
@@ -214,7 +216,7 @@ public class ClientGui{
 	
 	public BufferedImage loadImage(String filename) {
 		try {
-			return ImageIO.read(ClientGui.class.getResourceAsStream("images/"+filename));
+			return ImageIO.read(new BufferedInputStream(new FileInputStream("images"+filename)));
 	    } catch (IOException e) {
 	    	System.out.println("Cant load image");
 	    	return null;

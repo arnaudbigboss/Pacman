@@ -13,7 +13,7 @@ public class Map {
 	private Map(String mapFile){
 		try {	
 			//Ouverture fichier
-			InputStream f = this.getClass().getClassLoader().getResourceAsStream(mapFile);
+			InputStream f = Map.class.getResourceAsStream(mapFile);
 			byte[] buffer = new byte[3];
 	    	
 	    	// On récupère Longueur et Largeur de la map    	
