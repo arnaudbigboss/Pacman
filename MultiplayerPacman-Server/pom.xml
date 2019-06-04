@@ -31,7 +31,7 @@
               <configuration>
                   <archive>
                       <manifest>
-                          <mainClass>fr.dauphine.ar.network.ServerMain</mainClass>
+                          <mainClass>fr.dauphine.ar.application.ServerMain</mainClass>
                       </manifest>
                   </archive>
               </configuration>

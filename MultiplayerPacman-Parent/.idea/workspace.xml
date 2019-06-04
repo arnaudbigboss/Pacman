@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9eabb12e-ffab-4cb2-b887-12caf7d064b6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../MultiplayerPacman-Client/src/main/java/fr/dauphine/ar/gui/ClientGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MultiplayerPacman-Client/src/main/java/fr/dauphine/ar/gui/ClientGui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MultiplayerPacman-Client/src/main/java/fr/dauphine/ar/model/Ghost.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MultiplayerPacman-Client/src/main/java/fr/dauphine/ar/model/Ghost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MultiplayerPacman-Client/src/main/java/fr/dauphine/ar/model/Pacman.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MultiplayerPacman-Client/src/main/java/fr/dauphine/ar/model/Pacman.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MultiplayerPacman-Server/src/main/java/fr/dauphine/ar/map/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MultiplayerPacman-Server/src/main/java/fr/dauphine/ar/map/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MultiplayerPacman-Server/target/classes/fr/dauphine/ar/map/Map.class" beforeDir="false" afterPath="$PROJECT_DIR$/../MultiplayerPacman-Server/target/classes/fr/dauphine/ar/map/Map.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MultiplayerPacman-Server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MultiplayerPacman-Server/pom.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../MultiplayerPacman-Client/target/" />
     <ignored path="$PROJECT_DIR$/../MultiplayerPacman-Server/target/" />
@@ -39,11 +33,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../MultiplayerPacman-Client/src/main/java/fr/dauphine/ar/model/Pacman.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="680">
               <caret line="156" column="97" selection-start-line="156" selection-start-column="97" selection-end-line="156" selection-end-column="97" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../MultiplayerPacman-Server/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="495">
+              <caret line="33" column="63" selection-start-line="33" selection-start-column="63" selection-end-line="33" selection-end-column="63" />
             </state>
           </provider>
         </entry>
@@ -87,6 +90,7 @@
         <option value="$PROJECT_DIR$/../MultiplayerPacman-Client/src/main/java/fr/dauphine/ar/gui/ClientGui.java" />
         <option value="$PROJECT_DIR$/../MultiplayerPacman-Client/src/main/java/fr/dauphine/ar/model/Ghost.java" />
         <option value="$PROJECT_DIR$/../MultiplayerPacman-Client/src/main/java/fr/dauphine/ar/model/Pacman.java" />
+        <option value="$PROJECT_DIR$/../MultiplayerPacman-Server/pom.xml" />
       </list>
     </option>
   </component>
@@ -235,12 +239,12 @@
       <updated>1559567236792</updated>
       <workItem from="1559567240227" duration="1677000" />
       <workItem from="1559639802311" duration="472000" />
-      <workItem from="1559654313658" duration="205000" />
+      <workItem from="1559654313658" duration="337000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2354000" />
+    <option name="totallyTimeSpent" value="2486000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1040" extended-state="6" />
@@ -514,9 +518,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../MultiplayerPacman-Server/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -542,6 +543,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
           <caret line="156" column="97" selection-start-line="156" selection-start-column="97" selection-end-line="156" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../MultiplayerPacman-Server/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="63" selection-start-line="33" selection-start-column="63" selection-end-line="33" selection-end-column="63" />
         </state>
       </provider>
     </entry>
