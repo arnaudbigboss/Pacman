@@ -16,6 +16,11 @@
     </parent>
 
     <build>
+        <resources>
+            <resource>
+                <directory>../Parent/resources/</directory>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
