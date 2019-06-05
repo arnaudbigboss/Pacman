@@ -1,0 +1,13 @@
+fr/dauphine/ar/network/PacmanProtocolException.class
+fr/dauphine/ar/network/PacmanOutput.class
+fr/dauphine/ar/network/PacmanProtocol.class
+fr/dauphine/ar/gui/ClientGui$3.class
+fr/dauphine/ar/model/Ghost.class
+fr/dauphine/ar/network/ClientHandleConnection.class
+fr/dauphine/ar/gui/ClientGui$1.class
+fr/dauphine/ar/model/Fruit.class
+fr/dauphine/ar/network/PacmanInput.class
+fr/dauphine/ar/gui/ClientGui.class
+fr/dauphine/ar/application/ClientMain.class
+fr/dauphine/ar/model/Pacman.class
+fr/dauphine/ar/gui/ClientGui$2.class
