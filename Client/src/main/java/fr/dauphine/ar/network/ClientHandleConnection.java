@@ -2,6 +2,7 @@ package fr.dauphine.ar.network;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.util.Iterator;
 
 import fr.dauphine.ar.gui.ClientGui;
 import fr.dauphine.ar.model.Ghost;
@@ -114,13 +115,29 @@ public class ClientHandleConnection extends Thread implements PacmanProtocol{
 	@Override
 	public void pacmanDead(int id) {
 		gui.changeGameMessage(gui.getPacmans().get(id).name(id)+" IS DEAD!");
-		gui.getPacmans().remove(id);
+
+		Iterator<Integer> iterator = gui.getPacmans().keySet().iterator();
+
+		while(iterator.hasNext()){
+			Integer pacmanId = iterator.next();
+			if(pacmanId == id){
+				iterator.remove();
+			}
+		}
+
 		gui.repaint();
 	}
 	
 	@Override
 	public void ghostDead(int id) {
-		gui.getGhosts().remove(id);
+		Iterator<Integer> iterator = gui.getGhosts().keySet().iterator();
+
+		while(iterator.hasNext()){
+			Integer ghostId = iterator.next();
+			if(ghostId == id){
+				iterator.remove();
+			}
+		}
 		gui.repaint();
 	}
 	

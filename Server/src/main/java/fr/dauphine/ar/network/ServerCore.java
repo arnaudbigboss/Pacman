@@ -15,11 +15,9 @@ public class ServerCore extends Thread {
 	private int port;
 	private ServerSocket ss;
 	private boolean stop = false;
-	private IPacmanLogger logger;
 
 	public ServerCore(int port) throws IOException {
 		this.port = port;
-		logger = new TextPacmanLogger();
 		LOGGER.info("Server started...");
 		this.start();
 		new Thread(Game.getInstance()).start();
@@ -31,7 +29,7 @@ public class ServerCore extends Thread {
 			while (!stop) {
 				try {
 					Socket s = ss.accept();
-					new Thread(new HandleClient(s, logger)).start();
+					new Thread(new HandleClient(s)).start();
 				} catch (SocketTimeoutException ex) {
 				}
 			}

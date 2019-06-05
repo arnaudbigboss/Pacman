@@ -12,7 +12,7 @@ public class PacmanInput {
 	InputStream in;
 	boolean stop = false;
 
-	public PacmanInput(InputStream in, PacmanProtocol handler) throws IOException {
+	public PacmanInput(InputStream in, PacmanProtocol handler) {
 		this.in = in;
 		this.handler = handler;
 	}

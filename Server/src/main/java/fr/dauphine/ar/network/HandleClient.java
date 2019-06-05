@@ -5,24 +5,25 @@ import fr.dauphine.ar.model.Direction;
 import fr.dauphine.ar.model.Game;
 import fr.dauphine.ar.model.Ghost;
 import fr.dauphine.ar.model.Pacman;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.net.Socket;
 
 public class HandleClient implements Runnable, PacmanProtocol, PacmanModelEvents {
+	private static final Logger LOGGER = Logger.getLogger(HandleClient.class);
+
 	private final Socket s;
 	private PacmanOutput pmo;
 	private PacmanInput pmi;
-	private IPacmanLogger logger;
 	private Game game = Game.getInstance();
 	private int id;
 	private boolean isAdmin;
 
 	private boolean stop = false;
 
-	public HandleClient(Socket s, IPacmanLogger logger) throws IOException {
+	public HandleClient(Socket s){
 		this.s = s;
-		this.logger = logger;
 		isAdmin = false;
 	}
 
@@ -41,7 +42,7 @@ public class HandleClient implements Runnable, PacmanProtocol, PacmanModelEvents
 	
 	public void init() {
 		id = game.connect(this);
-		logger.clientConnected(id);
+		LOGGER.info("New client connected. Id: "+id);
 		pmo.size(Map.length(), Map.width());
 		pmo.walls(Map.walls());
 		pmo.pills(game.getPills());
@@ -69,7 +70,7 @@ public class HandleClient implements Runnable, PacmanProtocol, PacmanModelEvents
 				ex.printStackTrace();
 			}
 			game.removeClient(id, isAdmin);
-			logger.clientDisconnected(id);
+			LOGGER.info("Client "+id+" disconnected");
 		}
 	}
 

@@ -12,6 +12,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ConcurrentModificationException;
 import java.util.TreeMap;
 
 import javax.imageio.ImageIO;
@@ -93,14 +94,20 @@ public class ClientGui{
 				
 				if(fruit.isActive())
 					g.drawImage(fruitImage, fruit.getX()*scale, fruit.getY()*scale, this);
-				
-				for(Ghost ghost : ghosts.values()) {
-					g.drawImage(ghost.draw(), ghost.getX(), ghost.getY(), this);
-				}
-				
-				for(Integer i : pacmans.keySet()) {
-					Pacman p = pacmans.get(i);
-					g.drawImage(p.draw(i), p.getX(), p.getY(), this);
+
+				try {
+
+					for (Integer i : ghosts.keySet()) {
+						Ghost ghost = ghosts.get(i);
+						g.drawImage(ghost.draw(), ghost.getX(), ghost.getY(), this);
+					}
+
+					for (Integer i : pacmans.keySet()) {
+						Pacman p = pacmans.get(i);
+						g.drawImage(p.draw(i), p.getX(), p.getY(), this);
+					}
+				} catch (ConcurrentModificationException e){
+					repaint();
 				}
 			}
 		};
@@ -206,10 +213,6 @@ public class ClientGui{
 	
 	public TreeMap<Integer, Ghost> getGhosts(){
 		return ghosts;
-	}
-	
-	public void notPlayer() {
-		player = false;
 	}
 	
 	public BufferedImage loadImage(String filename) {
