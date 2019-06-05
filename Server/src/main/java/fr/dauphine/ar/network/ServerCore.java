@@ -1,25 +1,26 @@
 package fr.dauphine.ar.network;
 
 import fr.dauphine.ar.model.Game;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 public class ServerCore extends Thread {
+	private static final Logger LOGGER = Logger.getLogger(ServerCore.class);
+
 	private int port;
-	ServerSocket ss;
+	private ServerSocket ss;
 	private boolean stop = false;
 	private IPacmanLogger logger;
 
 	public ServerCore(int port) throws IOException {
 		this.port = port;
 		logger = new TextPacmanLogger();
-		logger.systemMessage("Server started...");
+		LOGGER.info("Server started...");
 		this.start();
 		new Thread(Game.getInstance()).start();
 	}
@@ -35,8 +36,8 @@ public class ServerCore extends Thread {
 				}
 			}
 		} catch (IOException e) {
-			System.out.println("Could not bind port " + port);
-			Logger.getLogger(ServerCore.class.getName()).log(Level.SEVERE, null, e);
+			LOGGER.error("Could not bind port "+port);
+			LOGGER.fatal(e);
 		}
 	}
 }
