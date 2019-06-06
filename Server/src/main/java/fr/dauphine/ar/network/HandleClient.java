@@ -90,17 +90,24 @@ public class HandleClient implements Runnable, PacmanProtocol, PacmanModelEvents
 	public void gameOver() {
 		pmo.over();
 		pmo.pills(Map.pills());
+		LOGGER.info("Game is over !");
 	}
 	
 	@Override
 	public void admin() {
 		isAdmin = true;
 		pmo.admin();
+		LOGGER.info("Player "+id+" is now admin.");
 	}
 	
 	@Override
 	public void nbPlayers(int nbPlayers) {
 		pmo.nbPlayers(nbPlayers);
+		if(nbPlayers<2){
+			LOGGER.info("There is "+nbPlayers+" player");
+		} else {
+			LOGGER.info("There are "+nbPlayers+" player");
+		}
 	}
 	
 	@Override
@@ -111,11 +118,13 @@ public class HandleClient implements Runnable, PacmanProtocol, PacmanModelEvents
 	@Override
 	public void pacmanKilled(int pacmanID) {
 		pmo.pacmanDead(pacmanID);
+		LOGGER.info("Pacman "+id+ "has been killed !");
 	}
 
 	@Override
 	public void ghostKilled(int ghostID) {
 		pmo.ghostDead(ghostID);
+		LOGGER.info("Ghost "+id+ "has been killed !");
 	}
 	
 	@Override
