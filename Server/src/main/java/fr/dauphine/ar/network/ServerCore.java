@@ -16,9 +16,9 @@ public class ServerCore extends Thread {
 	private ServerSocket ss;
 	private boolean stop = false;
 
-	public ServerCore(int port) throws IOException {
+	public ServerCore(int port){
 		this.port = port;
-		LOGGER.info("Server started...");
+		LOGGER.info("Server started with port "+port);
 		this.start();
 		new Thread(Game.getInstance()).start();
 	}
@@ -30,12 +30,12 @@ public class ServerCore extends Thread {
 				try {
 					Socket s = ss.accept();
 					new Thread(new HandleClient(s)).start();
-				} catch (SocketTimeoutException ex) {
+				} catch (SocketTimeoutException e) {
 				}
 			}
 		} catch (IOException e) {
 			LOGGER.error("Could not bind port "+port);
-			LOGGER.fatal(e);
+			System.exit(1);
 		}
 	}
 }
