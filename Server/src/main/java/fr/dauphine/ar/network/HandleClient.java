@@ -106,7 +106,7 @@ public class HandleClient implements Runnable, PacmanProtocol, PacmanModelEvents
 		if(nbPlayers<2){
 			LOGGER.info("There is "+nbPlayers+" player");
 		} else {
-			LOGGER.info("There are "+nbPlayers+" player");
+			LOGGER.info("There are "+nbPlayers+" players");
 		}
 	}
 	

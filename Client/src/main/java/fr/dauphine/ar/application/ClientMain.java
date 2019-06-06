@@ -43,7 +43,8 @@ public class ClientMain {
 			System.exit(1);
 		}
 
-		try (Socket s = new Socket(server, port)){
+		try {
+			Socket s = new Socket(server, port);
 			ClientHandleConnection handler = new ClientHandleConnection(s);
 		} catch (IOException e) {
 			LOGGER.error("Could not connect");

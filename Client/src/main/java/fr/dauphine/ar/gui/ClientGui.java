@@ -10,12 +10,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.ConcurrentModificationException;
 import java.util.TreeMap;
 
-import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
@@ -42,9 +39,6 @@ public class ClientGui{
 	private int nbPlayers = 0;
 	private boolean admin = false;
 	private boolean player = false;
-	
-	private final BufferedImage pillImage = loadImage("pill.png");
-	private final BufferedImage fruitImage = loadImage("fruit.png");
 	
 	private String gameMessage = "";
 	
@@ -88,23 +82,23 @@ public class ClientGui{
 							g.fillRect(i*scale, j*scale, scale, scale);
 						g.setColor(Color.WHITE);
 						if(pills[i][j])
-							g.drawImage(pillImage, i*scale, j*scale, this);
+							g.drawImage(ImageLoader.PILL_IMAGE, i*scale, j*scale, this);
 					}
 				}
 				
 				if(fruit.isActive())
-					g.drawImage(fruitImage, fruit.getX()*scale, fruit.getY()*scale, this);
+					g.drawImage(ImageLoader.FRUIT_IMAGE, fruit.getX()*scale, fruit.getY()*scale, this);
 
 				try {
 
 					for (Integer i : ghosts.keySet()) {
 						Ghost ghost = ghosts.get(i);
-						g.drawImage(ghost.draw(), ghost.getX(), ghost.getY(), this);
+						g.drawImage(ImageLoader.drawGhost(ghost.getColor()), ghost.getX(), ghost.getY(), this);
 					}
 
 					for (Integer i : pacmans.keySet()) {
 						Pacman p = pacmans.get(i);
-						g.drawImage(p.draw(i), p.getX(), p.getY(), this);
+						g.drawImage(ImageLoader.drawPacman(p, i), p.getX(), p.getY(), this);
 					}
 				} catch (ConcurrentModificationException e){
 					repaint();
@@ -213,14 +207,5 @@ public class ClientGui{
 	
 	public TreeMap<Integer, Ghost> getGhosts(){
 		return ghosts;
-	}
-	
-	public BufferedImage loadImage(String filename) {
-		try {
-			return ImageIO.read(ClientGui.class.getClassLoader().getResourceAsStream("images/"+filename));
-	    } catch (IOException e) {
-	    	System.out.println("Cant load image");
-	    	return null;
-	    }
 	}
 }

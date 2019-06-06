@@ -1,15 +1,5 @@
 package fr.dauphine.ar.model;
 
-import java.awt.geom.AffineTransform;
-import java.awt.geom.NoninvertibleTransformException;
-import java.awt.image.AffineTransformOp;
-import java.awt.image.BufferedImage;
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
 public class Pacman {
 	private int x;
 	private int y;
@@ -42,7 +32,7 @@ public class Pacman {
 		this.y = y;
 	}
 
-	public boolean isSuper() {
+	public boolean isSuper(){
 		return isSuper;
 	}
 
@@ -50,7 +40,7 @@ public class Pacman {
 		this.isSuper = isSuper;
 	}
 
-	public String getDirection() {
+	public String getDirection(){
 		return direction;
 	}
 	
@@ -64,6 +54,14 @@ public class Pacman {
 	
 	public int getScore() {
 		return score;
+	}
+
+	public int getOpenMouth(){
+		return openMouth;
+	}
+
+	public void increaseOpenMouth(){
+		openMouth++;
 	}
 	
 	public String name(int key) {
@@ -79,86 +77,6 @@ public class Pacman {
 		default:
 			return "";
 		}
-	}
-	
-	private final BufferedImage[] pacmanred = new BufferedImage[] {
-			loadImage("pacmanred1.png"),
-			loadImage("pacmanred2.png"),
-			loadImage("pacmanred3.png"),
-			loadImage("pacmanred4.png"),
-	};
-	
-	private final BufferedImage[] pacmanblue = new BufferedImage[] {
-			loadImage("pacmanblue1.png"),
-			loadImage("pacmanblue2.png"),
-			loadImage("pacmanblue3.png"),
-			loadImage("pacmanblue4.png"),
-	};
-	
-	private final BufferedImage[] pacmangreen = new BufferedImage[] {
-			loadImage("pacmangreen1.png"),
-			loadImage("pacmangreen2.png"),
-			loadImage("pacmangreen3.png"),
-			loadImage("pacmangreen4.png"),
-	};
-	
-	private final BufferedImage[] pacmanyellow = new BufferedImage[] {
-			loadImage("pacmanyellow1.png"),
-			loadImage("pacmanyellow2.png"),
-			loadImage("pacmanyellow3.png"),
-			loadImage("pacmanyellow4.png"),
-	};
-	
-	public BufferedImage draw(int i) {
-		int index = 0;
-		if(openMouth%2==1)
-			index++;
-		if(isSuper)
-			index+=2;
-		BufferedImage pacmanImage;
-		if(i%4==0) pacmanImage = pacmanred[index];
-		else if (i%4==1) pacmanImage = pacmanblue[index];
-		else if (i%4==2) pacmanImage = pacmangreen[index];
-		else pacmanImage = pacmanyellow[index];
-		openMouth++;
-		if(direction.equals("RIGHT"))
-			return pacmanImage;
-		else {
-			AffineTransform transform = new AffineTransform();
-			AffineTransformOp op;
-			if(direction.equals("DOWN")) {
-				transform.rotate(Math.PI/2, pacmanImage.getWidth()/2, pacmanImage.getHeight()/2);
-				op = new AffineTransformOp(transform, AffineTransformOp.TYPE_BILINEAR);
-				pacmanImage = op.filter(pacmanImage, null);
-				return pacmanImage;
-			} else if(direction.equals("LEFT")) {
-				transform.concatenate(AffineTransform.getScaleInstance(1, -1));
-		        transform.concatenate(AffineTransform.getTranslateInstance(0, -pacmanImage.getHeight()));
-		        transform.rotate(Math.PI, pacmanImage.getWidth()/2, pacmanImage.getHeight()/2);
-				op = new AffineTransformOp(transform, AffineTransformOp.TYPE_BILINEAR);
-				pacmanImage = op.filter(pacmanImage, null);
-				return pacmanImage;
-			} else {
-				transform.rotate(Math.PI/2, pacmanImage.getWidth()/2, pacmanImage.getHeight()/2);
-				try {
-					transform.invert();
-				} catch (NoninvertibleTransformException e) {
-					e.printStackTrace();
-				}
-				op = new AffineTransformOp(transform, AffineTransformOp.TYPE_BILINEAR);
-				pacmanImage = op.filter(pacmanImage, null);
-				return pacmanImage;
-			}
-		}
-	}
-	
-	public BufferedImage loadImage(String filename) {
-		try {
-			return ImageIO.read(Pacman.class.getClassLoader().getResourceAsStream("images/"+filename));
-	    } catch (IOException e) {
-	    	System.out.println("Cant load image");
-	    	return null;
-	    }
 	}
 
 }

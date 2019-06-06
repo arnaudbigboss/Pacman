@@ -1,26 +1,13 @@
 package fr.dauphine.ar.model;
 
-import java.awt.image.BufferedImage;
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Random;
+import fr.dauphine.ar.gui.ImageLoader;
 
-import javax.imageio.ImageIO;
+import java.util.Random;
 
 public class Ghost {
 	private int x;
 	private int y;
-	
-	private final BufferedImage[] ghosts = new BufferedImage[] {
-	loadImage("ghost1.png"),
-	loadImage("ghost2.png"),
-	loadImage("ghost3.png"),
-	loadImage("ghost4.png"),
-	};
-	
-	private final Random r = new Random();
-	private int color = r.nextInt(ghosts.length);
+	private int color = new Random().nextInt(ImageLoader.nbGhostImages());
 	
 	public Ghost(int x, int y) {
 		this.x = x;
@@ -42,17 +29,8 @@ public class Ghost {
 	public void setY(int y) {
 		this.y = y;
 	}
-	
-	public BufferedImage draw() {
-		return ghosts[color];
-	}
-	
-	public BufferedImage loadImage(String filename) {
-		try {
-			return ImageIO.read(Ghost.class.getClassLoader().getResourceAsStream("images/"+filename));
-	    } catch (IOException e) {
-	    	System.out.println("Cant load image");
-	    	return null;
-	    }
-	}
+
+	public int getColor(){
+	    return color;
+    }
 }
