@@ -23,13 +23,13 @@ public class ServerMain {
 		options.addOption("p", "port", true, "Server port");
 
 		try {
-			CommandLine cmd = parser.parse( options, args);
+			CommandLine cmd = parser.parse(options, args);
 			if(cmd.hasOption("p")) {
 				port = Integer.parseInt(cmd.getOptionValue("p"));
 			}
 
 		} catch (ParseException e) {
-			System.err.println("Error: invalid command line format.");
+			LOGGER.error("Invalid command line format");
 			HelpFormatter formatter = new HelpFormatter();
 			formatter.printHelp( "Pacman", options );
 			System.exit(1);

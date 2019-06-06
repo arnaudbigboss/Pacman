@@ -22,7 +22,7 @@ public class HandleClient implements Runnable, PacmanProtocol, PacmanModelEvents
 
 	private boolean stop = false;
 
-	public HandleClient(Socket s){
+	public 	HandleClient(Socket s){
 		this.s = s;
 		isAdmin = false;
 	}
