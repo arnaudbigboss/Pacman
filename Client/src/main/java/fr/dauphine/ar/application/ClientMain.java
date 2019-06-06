@@ -9,7 +9,6 @@ import org.apache.log4j.Logger;
 
 public class ClientMain {
 	private static final Logger LOGGER = Logger.getLogger(ClientMain.class);
-
 	public static void main(String[] args) {
 		BasicConfigurator.configure();
 

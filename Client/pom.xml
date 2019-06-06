@@ -20,6 +20,7 @@
         <resources>
             <resource>
                 <directory>../Parent/resources/</directory>
+                <filtering>true</filtering>
             </resource>
         </resources>
         <plugins>
@@ -29,11 +30,7 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
+                <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
                     <archive>
                         <manifest>
