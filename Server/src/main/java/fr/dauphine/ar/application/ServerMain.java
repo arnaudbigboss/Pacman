@@ -14,9 +14,8 @@ public class ServerMain {
 	public static void main(String[] args) {
 		BasicConfigurator.configure();
 		Properties properties = PropertiesLoader.get("config.properties");
-		System.out.println(properties.get("privatekey"));
-		System.out.println(properties.get("port"));
-		int port = args.length == 1 ? Integer.parseInt(args[0]) : 1234;
+		int port = args.length == 1 ? Integer.parseInt(args[0]) : Integer.parseInt(properties.get("port").toString());
+		System.out.println(port);
 		try {
 			ServerCore core = new ServerCore(port);
 		} catch (IOException e) {
