@@ -37,6 +37,7 @@
                             <mainClass>fr.dauphine.ar.application.ClientMain</mainClass>
                         </manifest>
                     </archive>
+                    <finalName>PacmanClient</finalName>
                 </configuration>
             </plugin>
         </plugins>

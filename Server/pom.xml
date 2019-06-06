@@ -36,6 +36,7 @@
                             <mainClass>fr.dauphine.ar.application.ServerMain</mainClass>
                         </manifest>
                     </archive>
+                    <finalName>PacmanServer</finalName>
                 </configuration>
             </plugin>
         </plugins>
