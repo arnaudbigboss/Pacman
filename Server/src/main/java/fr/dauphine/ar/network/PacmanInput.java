@@ -1,6 +1,7 @@
 package fr.dauphine.ar.network;
 
 import fr.dauphine.ar.model.Direction;
+import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,9 +9,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class PacmanInput {
-	PacmanProtocol handler;
-	InputStream in;
-	boolean stop = false;
+	private static final Logger LOGGER = Logger.getLogger(PacmanInput.class);
+	private PacmanProtocol handler;
+	private InputStream in;
+	private boolean stop = false;
 
 	public PacmanInput(InputStream in, PacmanProtocol handler) {
 		this.in = in;
@@ -45,7 +47,8 @@ public class PacmanInput {
 					handler.move(Direction.Left);
 					break;
 				default:
-					throw new PacmanProtocolException("Invalid input");
+					LOGGER.error("Invalid protocole input");
+					System.exit(1);
 				}
 			}
 		}

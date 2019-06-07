@@ -1,12 +1,34 @@
+--- LE JEU PACMAN ---
+
+Pour démarrer le jeu, il faut commencer par lancer le server. Lorsqu'un client rejoint le server, il est automatiquement considéré comme spectateur. Pour jouer, il faut cliquer sur le bouton PLAY lorsque le jeu n'est pas en cours. Le client sera alors considéré comme joueur. Le premier joueur sera administrateur, et sa tâche sera alors de lancer la partie.
+
+Il y a entre deux et quatre joueurs. Un joueur gagne s'il est le seul restant dans le jeu, ou s'il a le plus de points lorsque tous les bonbons sont mangés. Un pacman meurt au contact d'un fantôme. Lorsqu'un pacman mange le fruit, il devient Super: il peut manger tout le monde, et se déplace plus rapidement.
+
+
+--- MAVEN ---
+
+Nous utilisons l'outil Maven, qui nous permet d'avoir une automatisation de la génération des exécutables, et d'avoir une meilleure gestion des dépendances.
+
+Maven est embarqué par défaut dans les IDE classiques, tel que Eclipse ou IntelliJ. L'outil n'est pas indispensable pour l'éxécution du projet: il faut cependant importer le projet en tant que Projet Maven.
+
+Le projet est découpé en trois dossiers: Client, Server et Parent. Ces dossiers sont appelés Modules, au sens de Maven.
+
+Le module parent est le module coeur du projet. Il contient toutes les resources du projet, et il gère les dépendances utilisées (notamment la version des dépendances). Toute la description de cette gestion est contenue dans le fichier 'pom.xml'. 
+
+Pour générer les exécutables du projet (.jar), il faut lancer la commande 'mvn clean install' là où se trouve le 'pom.xml' du parent. Les jar se trouveront ainsi dans Client/target et dans Server/target.
+
+
+--- SERVER ---
+
+Le point d'entrée du Server est la classe ServerMain (fr.dauphine.ar.application.ServerMain). Lorsque le port est défini, il va instancier un nouvel objet de type ServerCore.
+
+Le port est défini par défaut à 1234. Il peut être défini par l'utilisateur via l'argument '-p' à l'éxécution.
+
+Le ServerCore instancié va lancer l'instance de Game (qui est un singleton). Il va ensuite écouter les connexions de futur client. Lorsqu'un client se connecte, le ServerCore va crée un HandleClient pour le client. Un HandleClient est donc la vue que le Server a de chaque client. La gestion de chaque client est ainsi contenu dans ce HandleClient.
+
+HandleClient implémente les interfaces PacmanProtocol et PacmanModelEvents. Chaque HandleClient contient une entrée (PacmanInput) et une sortie (PacmanOutput). Cette classe contient également les informations pour identifier chaque client. 
+
+
 Le projet est divisé en deux packages: server et client.
 Il y a deux mains dans le projet, un côté server, et un côté client, dans les classes ServerMain et ClientMain
 Par défaut, l'adresse du server est "localhost", et le port "1234". Ils sont modifiables dans les classes des main.
-
-Pour démarrer le jeu, il faut commencer par lancer le server. Lorsqu'un client rejoint le server, il est automatiquement
-considéré comme spectateur. Pour jouer, il faut cliquer sur le bouton PLAY lorsque le jeu n'est pas en cours. Le client
-sera alors considéré comme joueur. Le premier joueur sera administrateur, et sa tâche sera alors de lancer la partie.
-
-Règle:
-Il y a entre deux et quatre joueurs. Un joueur gagne s'il est le seul restant dans le jeu, ou s'il a le plus de points
-lorsque tous les bonbons sont mangés. Un pacman meurt au contact d'un fantôme. Lorsqu'un pacman mange le fruit, 
-il devient Super: il peut manger tout le monde, et se déplace plus rapidement.

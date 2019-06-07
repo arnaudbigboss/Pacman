@@ -15,13 +15,11 @@ public interface PacmanProtocol {
 	default void pills(boolean[][] pills) {}
 	default void eat(int x, int y) {}
 	default void fruit(boolean isActive, int x, int y) {}
-	default void gameMessage(String s) {}
 	default void nbPlayers(int nbPlayers) {}
 	default void sendID(int id) {}
 	default void admin() {}
 	default void pacman(int id, String pacmanState, int x, int y, String direction, int score) {}
 	default void pacmanDead(int id) {}
-	default void pacmanScore(int score) {}
 	default void ghost(int id, int x, int y) {}
 	default void ghostDead(int id) {}
 	default void over() {}

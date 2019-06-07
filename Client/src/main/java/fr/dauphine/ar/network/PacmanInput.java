@@ -1,5 +1,7 @@
 package fr.dauphine.ar.network;
 
+import org.apache.log4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,11 +9,13 @@ import java.io.InputStreamReader;
 
 
 public class PacmanInput {
-	PacmanProtocol handler;
-	InputStream in;
-	public boolean stop = false;
+	private static final Logger LOGGER = Logger.getLogger(PacmanInput.class);
 
-	public PacmanInput(InputStream in, PacmanProtocol handler) throws IOException {
+	private PacmanProtocol handler;
+	private InputStream in;
+	private boolean stop = false;
+
+	public PacmanInput(InputStream in, PacmanProtocol handler) {
 		this.in = in;
 		this.handler = handler;
 	}
@@ -28,7 +32,10 @@ public class PacmanInput {
 		try (BufferedReader is = new BufferedReader(new InputStreamReader(in))) {
 			while (!stop) {
 				String line = is.readLine();
-				if(line==null) throw new IOException();
+				if(line==null) {
+					LOGGER.error("Cannot read input: line is null");
+					System.exit(1);
+				}
 				switch (line) {
 				case "SIZE":
 					length = Integer.parseInt(is.readLine());
@@ -96,7 +103,8 @@ public class PacmanInput {
 					handler.over();
 					break;
 				default:
-					throw new PacmanProtocolException("Invalid input");
+					LOGGER.error("Invalid protocole input");
+					System.exit(1);
 				}
 			}
 		}

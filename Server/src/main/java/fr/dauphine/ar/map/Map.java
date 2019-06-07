@@ -1,19 +1,21 @@
 package fr.dauphine.ar.map;
 
+import org.apache.log4j.Logger;
+
 import java.io.IOException;
 import java.io.InputStream;
 
 
 public class Map {
+	private static final Logger LOGGER = Logger.getLogger(Map.class);
+
 	private static Map m = new Map("map.txt");
 	private int length;
 	private int width;
 	private int[][] map;
 	
 	private Map(String mapFile){
-		try {	
-			//Ouverture fichier
-			InputStream f = Map.class.getClassLoader().getResourceAsStream(mapFile);
+		try (InputStream f = Map.class.getClassLoader().getResourceAsStream(mapFile)){
 			byte[] buffer = new byte[3];
 	    	
 	    	// On récupère Longueur et Largeur de la map    	
@@ -34,12 +36,10 @@ public class Map {
 	    			map[j][i] = buf[j]-48;
 	    		}
 	    	}
-	    	
-	    	//Fermeture Fichier
-	    	f.close();
 		}
 		catch (IOException e) {
-        	e.printStackTrace();
+        	LOGGER.error("Cannot load map");
+        	System.exit(1);
 		}
 	}
 	

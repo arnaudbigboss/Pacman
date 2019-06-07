@@ -66,8 +66,8 @@ public class HandleClient implements Runnable, PacmanProtocol, PacmanModelEvents
 			stop = true;
 			try {
 				s.close();
-			} catch (IOException ex) {
-				ex.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 			game.removeClient(id, isAdmin);
 			LOGGER.info("Client "+id+" disconnected");
